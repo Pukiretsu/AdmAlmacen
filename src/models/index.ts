@@ -1,3 +1,3 @@
 export * from './persona.model';
-export * from './dependencia.model';
-export * from './admin.model';
+export * from './elemento.model';
+export * from './prestamo.model';

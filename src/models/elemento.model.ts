@@ -1,60 +1,53 @@
 import {Entity, model, property} from '@loopback/repository';
 
 @model()
-export class Persona extends Entity {
+export class Elemento extends Entity {
+  @property({
+    type: 'string',
+    required: true,
+  })
+  clase: string;
+
   @property({
     type: 'string',
     id: true,
     generated: false,
     required: true,
   })
-  cedula: string;
+  numeroInventario: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  nombre: string;
-
-
-  @property({
-    type: 'string',
-    required: true,
-  })
-  apellido: string;
+  marca: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  placa: string;
+  modelo: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  dependencia: string;
+  serie: string;
 
   @property({
     type: 'string',
     required: true,
   })
-  telefono: string;
+  plazoMaximoPrestamo: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  rol: string;
 
-  constructor(data?: Partial<Persona>) {
+  constructor(data?: Partial<Elemento>) {
     super(data);
   }
 }
 
-export interface PersonaRelations {
+export interface ElementoRelations {
   // describe navigational properties here
 }
 
-export type PersonaWithRelations = Persona & PersonaRelations;
-
+export type ElementoWithRelations = Elemento & ElementoRelations;
