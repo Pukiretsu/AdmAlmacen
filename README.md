@@ -2,9 +2,13 @@
 
 Bueno esta nota es para el equipo de desarrollo. aqui voy a dejar las especificaciones consignadas sobre lo que nos dijo carlos con respecto a lo que quiere con la aplicacion
 
+todo lo que concierne a informacion del proyecto, diagramas, documentacion y otros puede ser encontrada [aqui](https://github.com/Pukiretsu/AdmAlmacen/tree/main/Informacion%20y%20documentos)
+
+o entrando en la ruta del proyecto `AdmAlmacen/informacion y documentos/`
+
 ## Entidades
 
-para el proyecto se crearon 6 modelos correspondiendo a las necesidades del proyecto.
+para el proyecto se crearon 6 modelos correspondiendo a las necesidades del proyecto las relaciones entre estos pueden ser encontradas [aqui](https://raw.githubusercontent.com/Pukiretsu/AdmAlmacen/main/Informacion%20y%20documentos/Diagrama%20entidad%20relacion%20de%20modelos.png).
 
 a continuacion una breve explicación
 
