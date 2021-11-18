@@ -7,8 +7,12 @@ export class Prestamo extends Entity {
     id: true,
     generated: true,
   })
-  id_Prestamo?: string;
+  idPrestamo?: string;
 
+  @property({
+    type: 'string',
+  })
+  prestanteId?: string;
 
   constructor(data?: Partial<Prestamo>) {
     super(data);
