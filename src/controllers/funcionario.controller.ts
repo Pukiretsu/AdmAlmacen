@@ -1,3 +1,4 @@
+import {service} from '@loopback/core';
 import {
   Count,
   CountSchema,
@@ -19,11 +20,14 @@ import {
 } from '@loopback/rest';
 import {Funcionario} from '../models';
 import {FuncionarioRepository} from '../repositories';
+import {AutenticacionService} from '../services';
 
 export class FuncionarioController {
   constructor(
     @repository(FuncionarioRepository)
     public funcionarioRepository : FuncionarioRepository,
+    @service(AutenticacionService)
+    public authservice : AutenticacionService
   ) {}
 
   @post('/funcionarios')
@@ -44,6 +48,9 @@ export class FuncionarioController {
     })
     funcionario: Omit<Funcionario, 'id'>,
   ): Promise<Funcionario> {
+    const encryptedPaswd = this.authservice.cifrarPassword(funcionario.password);
+    funcionario.password = encryptedPaswd;
+
     return this.funcionarioRepository.create(funcionario);
   }
 
