@@ -5,30 +5,58 @@ import {
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, HttpErrors, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
-import {Funcionario} from '../models';
+import {Credentials, Funcionario} from '../models';
 import {FuncionarioRepository} from '../repositories';
 import {AutenticacionService} from '../services';
 
 export class FuncionarioController {
   constructor(
     @repository(FuncionarioRepository)
-    public funcionarioRepository : FuncionarioRepository,
+    public funcionarioRepository: FuncionarioRepository,
     @service(AutenticacionService)
-    public authservice : AutenticacionService
-  ) {}
+    public authservice: AutenticacionService
+  ) { }
+
+
+  @post('/identificarPersona',
+    {
+      responses: {
+        '200':
+        {
+          description: "identificacion de Usuarios",
+        }
+      }
+
+    })
+  async identifyperson(
+    @requestBody() credentials: Credentials
+  ) {
+    const f = await this.authservice.identificar(credentials.cedula, credentials.placa, credentials.password)
+    if (f) {
+      const token = this.authservice.jwtToken(f);
+      return {
+        data:
+        {
+          id: f.id,
+          cedula: f.cedula,
+          placa: f.placa,
+          nombre: f.nombre,
+          grado: f.grado,
+          telefono: f.telefono,
+        },
+        tk: token
+      }
+    } else {
+      throw new HttpErrors[401]("Datos invalidos")
+    }
+  }
 
   @post('/funcionarios')
   @response(200, {

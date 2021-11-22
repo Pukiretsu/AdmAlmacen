@@ -4,3 +4,4 @@ export * from './prestamo.model';
 export * from './funcionario.model';
 export * from './salida.model';
 export * from './entrada.model';
+export * from './credentials.model';
