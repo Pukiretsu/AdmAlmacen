@@ -1,88 +1,65 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
-  <title>Aplicacion para administrar un almacen de telematica de la policia</title>
+  <title>Almacen Telematica</title>
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" type="image/x-icon" href="https://loopback.io/favicon.ico">
 
-  <style>
-    h3 {
-      margin-left: 25px;
-      text-align: center;
-    }
+  <!-- Icono para la pagina -->
+  <link rel="shortcut icon" href="https://www.policia.gov.co/sites/default/files/escudo-policia_0.png" type="image/png">
 
-    a, a:visited {
-      color: #3f5dff;
-    }
+  <!-- Fuentes y scripts  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="\css\style.css" />
 
-    h3 a {
-      margin-left: 10px;
-    }
-
-    a:hover, a:focus, a:active {
-      color: #001956;
-    }
-
-    .power {
-      position: absolute;
-      bottom: 25px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .info {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%)
-    }
-
-    .info h1 {
-      text-align: center;
-      margin-bottom: 0;
-    }
-
-    .info p {
-      text-align: center;
-      margin-bottom: 3em;
-      margin-top: 1em;
-    }
-
-    @media (prefers-color-scheme: dark) {
-      body {
-        background-color: rgb(29, 30, 32);
-        color: white;
-      }
-
-      a, a:visited {
-        color: #4990e2;
-      }
-
-      a:hover, a:focus, a:active {
-        color: #2b78ff;
-      }
-    }
-  </style>
 </head>
 
 <body>
-  <div class="info">
-    <h1>admalmacen</h1>
-    <p>Version 1.0.0</p>
+  <div class="header">
+    <header>Almacén Telemática</header>
+  </div>
+  <div id="logos">
+    <div style="display: flex; align-items: center;">
+      <img typeof="foaf:Image" style="height: 100%;"
+        src="https://www.policia.gov.co/sites/default/files/escudo-policia.png" alt="Inicio">
 
-    <h3>OpenAPI spec: <a href="./openapi.json">/openapi.json</a></h3>
-    <h3>API Explorer: <a href="./explorer">/explorer</a></h3>
+      <img typeof="foaf:Image" id="mindefensa" style="height: 100%;"
+        src="https://www.policia.gov.co/sites/default/files/seguridad_de_todos.png" alt="">
+    </div>
+    <div>
+      <img style="height: 100%;" src="\Assets\logoInt.png" alt="">
+    </div>
+
   </div>
 
-  <footer class="power">
-    <a href="https://loopback.io" target="_blank">
-      <img src="https://loopback.io/images/branding/powered-by-loopback/blue/powered-by-loopback-sm.png" />
-    </a>
-  </footer>
+
+  <div class="viewport">
+    <div id="login-view">
+      <h2>Bienvenido de vuelta</h2>
+      <form id="login-form">
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="Placa" name="Placa" id='Placa' required />
+          <label for="Placa" class="form__label">Placa</label>
+        </div>
+        <div class="form__group field">
+          <input type="input" class="form__field" placeholder="Cedula" name="Cedula" id='Cedula' required />
+          <label for="Cedula" class="form__label">Cédula</label>
+        </div>
+        <div class="form__group field">
+          <input type="password" class="form__field" placeholder="Paswd" name="Paswd" id='Paswd' required />
+          <label for="Paswd" class="form__label">Contraseña</label>
+        </div>
+        <a href="#" class="bluebutton" style="margin-top: 0.8rem;">Ingresar</a>
+      </form>
+
+    </div>
+  </div>
 </body>
 
 </html>
