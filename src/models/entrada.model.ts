@@ -1,6 +1,4 @@
-import {Entity, model, property, hasOne} from '@loopback/repository';
-import {Prestamo} from './prestamo.model';
-
+import {Entity, model, property} from '@loopback/repository';
 @model()
 export class Entrada extends Entity {
   @property({
@@ -22,16 +20,8 @@ export class Entrada extends Entity {
   })
   observacion: string;
 
-  @hasOne(() => Prestamo, {keyTo: 'idEntrada'})
-  recibido: Prestamo;
-
   constructor(data?: Partial<Entrada>) {
     super(data);
   }
 }
 
-export interface EntradaRelations {
-  // describe navigational properties here
-}
-
-export type EntradaWithRelations = Entrada & EntradaRelations;

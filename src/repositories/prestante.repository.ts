@@ -1,22 +1,13 @@
-import {inject, Getter} from '@loopback/core';
-import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
+import {inject} from '@loopback/core';
+import {DefaultCrudRepository} from '@loopback/repository';
 import {MonGoDbDataSource} from '../datasources';
-import {Prestante, PrestanteRelations, Prestamo} from '../models';
-import {PrestamoRepository} from './prestamo.repository';
+import {Prestante} from '../models';
 
-export class PrestanteRepository extends DefaultCrudRepository<
-  Prestante,
-  typeof Prestante.prototype.id,
-  PrestanteRelations
-> {
-
-  public readonly prestamosFuncionario: HasManyRepositoryFactory<Prestamo, typeof Prestante.prototype.id>;
-
+export class PrestanteRepository extends DefaultCrudRepository<Prestante, typeof Prestante.prototype.id>
+{
   constructor(
-    @inject('datasources.monGODb') dataSource: MonGoDbDataSource, @repository.getter('PrestamoRepository') protected prestamoRepositoryGetter: Getter<PrestamoRepository>,
+    @inject('datasources.monGODb') dataSource: MonGoDbDataSource,
   ) {
     super(Prestante, dataSource);
-    this.prestamosFuncionario = this.createHasManyRepositoryFactoryFor('prestamosFuncionario', prestamoRepositoryGetter,);
-    this.registerInclusionResolver('prestamosFuncionario', this.prestamosFuncionario.inclusionResolver);
   }
 }

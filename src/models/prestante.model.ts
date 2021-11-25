@@ -1,5 +1,4 @@
-import {Entity, hasMany, model, property} from '@loopback/repository';
-import {Prestamo} from './prestamo.model';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Prestante extends Entity {
@@ -52,16 +51,7 @@ export class Prestante extends Entity {
   })
   telefono: string;
 
-  @hasMany(() => Prestamo, {keyTo: 'idPrestante'})
-  prestamosPrestante: Prestamo[];
-
   constructor(data?: Partial<Prestante>) {
     super(data);
   }
 }
-
-export interface PrestanteRelations {
-  // describe navigational properties here
-}
-
-export type PrestanteWithRelations = Prestante & PrestanteRelations;

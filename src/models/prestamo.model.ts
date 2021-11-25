@@ -56,9 +56,3 @@ export class Prestamo extends Entity {
     super(data);
   }
 }
-
-export interface PrestamoRelations {
-  // describe navigational properties here
-}
-
-export type PrestamoWithRelations = Prestamo & PrestamoRelations;

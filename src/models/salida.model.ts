@@ -1,5 +1,4 @@
-import {Entity, model, property, hasOne} from '@loopback/repository';
-import {Prestamo} from './prestamo.model';
+import {Entity, model, property} from '@loopback/repository';
 
 @model()
 export class Salida extends Entity {
@@ -22,16 +21,7 @@ export class Salida extends Entity {
   })
   observacion: string;
 
-  @hasOne(() => Prestamo, {keyTo: 'idSalida'})
-  salida: Prestamo;
-
   constructor(data?: Partial<Salida>) {
     super(data);
   }
 }
-
-export interface SalidaRelations {
-  // describe navigational properties here
-}
-
-export type SalidaWithRelations = Salida & SalidaRelations;
