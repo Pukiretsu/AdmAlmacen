@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,7 @@ export class PrestamoController {
     public prestamoRepository : PrestamoRepository,
   ) {}
 
+  @authenticate('funcionario')
   @post('/prestamos')
   @response(200, {
     description: 'Prestamo model instance',
@@ -47,6 +49,7 @@ export class PrestamoController {
     return this.prestamoRepository.create(prestamo);
   }
 
+  @authenticate('funcionario')
   @get('/prestamos/count')
   @response(200, {
     description: 'Prestamo model count',
@@ -58,6 +61,7 @@ export class PrestamoController {
     return this.prestamoRepository.count(where);
   }
 
+  @authenticate('funcionario')
   @get('/prestamos')
   @response(200, {
     description: 'Array of Prestamo model instances',
@@ -76,6 +80,7 @@ export class PrestamoController {
     return this.prestamoRepository.find(filter);
   }
 
+  @authenticate('funcionario')
   @patch('/prestamos')
   @response(200, {
     description: 'Prestamo PATCH success count',
@@ -95,6 +100,7 @@ export class PrestamoController {
     return this.prestamoRepository.updateAll(prestamo, where);
   }
 
+  @authenticate('funcionario')
   @get('/prestamos/{id}')
   @response(200, {
     description: 'Prestamo model instance',
@@ -111,6 +117,7 @@ export class PrestamoController {
     return this.prestamoRepository.findById(id, filter);
   }
 
+  @authenticate('funcionario')
   @patch('/prestamos/{id}')
   @response(204, {
     description: 'Prestamo PATCH success',
@@ -129,6 +136,7 @@ export class PrestamoController {
     await this.prestamoRepository.updateById(id, prestamo);
   }
 
+  @authenticate('funcionario')
   @put('/prestamos/{id}')
   @response(204, {
     description: 'Prestamo PUT success',
@@ -140,6 +148,7 @@ export class PrestamoController {
     await this.prestamoRepository.replaceById(id, prestamo);
   }
 
+  @authenticate('admin')
   @del('/prestamos/{id}')
   @response(204, {
     description: 'Prestamo DELETE success',

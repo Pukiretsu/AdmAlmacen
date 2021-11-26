@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,7 @@ export class EntradaController {
     public entradaRepository : EntradaRepository,
   ) {}
 
+  @authenticate('funcionario')
   @post('/entradas')
   @response(200, {
     description: 'Entrada model instance',
@@ -47,6 +49,7 @@ export class EntradaController {
     return this.entradaRepository.create(entrada);
   }
 
+  @authenticate('funcionario')
   @get('/entradas/count')
   @response(200, {
     description: 'Entrada model count',
@@ -58,6 +61,7 @@ export class EntradaController {
     return this.entradaRepository.count(where);
   }
 
+  @authenticate('funcionario')
   @get('/entradas')
   @response(200, {
     description: 'Array of Entrada model instances',
@@ -76,6 +80,8 @@ export class EntradaController {
     return this.entradaRepository.find(filter);
   }
 
+
+  @authenticate('funcionario')
   @patch('/entradas')
   @response(200, {
     description: 'Entrada PATCH success count',
@@ -95,6 +101,7 @@ export class EntradaController {
     return this.entradaRepository.updateAll(entrada, where);
   }
 
+  @authenticate('funcionario')
   @get('/entradas/{id}')
   @response(200, {
     description: 'Entrada model instance',
@@ -111,6 +118,7 @@ export class EntradaController {
     return this.entradaRepository.findById(id, filter);
   }
 
+  @authenticate('funcionario')
   @patch('/entradas/{id}')
   @response(204, {
     description: 'Entrada PATCH success',
@@ -129,6 +137,7 @@ export class EntradaController {
     await this.entradaRepository.updateById(id, entrada);
   }
 
+  @authenticate('funcionario')
   @put('/entradas/{id}')
   @response(204, {
     description: 'Entrada PUT success',
@@ -140,6 +149,7 @@ export class EntradaController {
     await this.entradaRepository.replaceById(id, entrada);
   }
 
+  @authenticate('admin')
   @del('/entradas/{id}')
   @response(204, {
     description: 'Entrada DELETE success',

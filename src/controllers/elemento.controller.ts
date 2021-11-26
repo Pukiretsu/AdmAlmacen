@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,7 @@ export class ElementoController {
     public elementoRepository : ElementoRepository,
   ) {}
 
+  @authenticate('funcionario')
   @post('/elementos')
   @response(200, {
     description: 'Elemento model instance',
@@ -47,6 +49,7 @@ export class ElementoController {
     return this.elementoRepository.create(elemento);
   }
 
+  @authenticate('funcionario')
   @get('/elementos/count')
   @response(200, {
     description: 'Elemento model count',
@@ -58,6 +61,7 @@ export class ElementoController {
     return this.elementoRepository.count(where);
   }
 
+  @authenticate('funcionario')
   @get('/elementos')
   @response(200, {
     description: 'Array of Elemento model instances',
@@ -76,6 +80,7 @@ export class ElementoController {
     return this.elementoRepository.find(filter);
   }
 
+  @authenticate('funcionario')
   @patch('/elementos')
   @response(200, {
     description: 'Elemento PATCH success count',
@@ -95,6 +100,7 @@ export class ElementoController {
     return this.elementoRepository.updateAll(elemento, where);
   }
 
+  @authenticate('funcionario')
   @get('/elementos/{id}')
   @response(200, {
     description: 'Elemento model instance',
@@ -111,6 +117,7 @@ export class ElementoController {
     return this.elementoRepository.findById(id, filter);
   }
 
+  @authenticate('funcionario')
   @patch('/elementos/{id}')
   @response(204, {
     description: 'Elemento PATCH success',
@@ -129,6 +136,7 @@ export class ElementoController {
     await this.elementoRepository.updateById(id, elemento);
   }
 
+  @authenticate('funcionario')
   @put('/elementos/{id}')
   @response(204, {
     description: 'Elemento PUT success',
@@ -140,6 +148,7 @@ export class ElementoController {
     await this.elementoRepository.replaceById(id, elemento);
   }
 
+  @authenticate('funcionario')
   @del('/elementos/{id}')
   @response(204, {
     description: 'Elemento DELETE success',

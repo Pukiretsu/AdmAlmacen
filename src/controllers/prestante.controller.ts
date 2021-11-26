@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -26,6 +27,7 @@ export class PrestanteController {
     public prestanteRepository : PrestanteRepository,
   ) {}
 
+  @authenticate('funcionario')
   @post('/prestantes')
   @response(200, {
     description: 'Prestante model instance',
@@ -47,6 +49,7 @@ export class PrestanteController {
     return this.prestanteRepository.create(prestante);
   }
 
+  @authenticate('funcionario')
   @get('/prestantes/count')
   @response(200, {
     description: 'Prestante model count',
@@ -58,6 +61,7 @@ export class PrestanteController {
     return this.prestanteRepository.count(where);
   }
 
+  @authenticate('funcionario')
   @get('/prestantes')
   @response(200, {
     description: 'Array of Prestante model instances',
@@ -76,6 +80,7 @@ export class PrestanteController {
     return this.prestanteRepository.find(filter);
   }
 
+  @authenticate('funcionario')
   @patch('/prestantes')
   @response(200, {
     description: 'Prestante PATCH success count',
@@ -95,6 +100,7 @@ export class PrestanteController {
     return this.prestanteRepository.updateAll(prestante, where);
   }
 
+  @authenticate('funcionario')
   @get('/prestantes/{id}')
   @response(200, {
     description: 'Prestante model instance',
@@ -111,6 +117,7 @@ export class PrestanteController {
     return this.prestanteRepository.findById(id, filter);
   }
 
+  @authenticate('funcionario')
   @patch('/prestantes/{id}')
   @response(204, {
     description: 'Prestante PATCH success',
@@ -129,6 +136,7 @@ export class PrestanteController {
     await this.prestanteRepository.updateById(id, prestante);
   }
 
+  @authenticate('funcionario')
   @put('/prestantes/{id}')
   @response(204, {
     description: 'Prestante PUT success',
@@ -140,6 +148,7 @@ export class PrestanteController {
     await this.prestanteRepository.replaceById(id, prestante);
   }
 
+  @authenticate('funcionario')
   @del('/prestantes/{id}')
   @response(204, {
     description: 'Prestante DELETE success',

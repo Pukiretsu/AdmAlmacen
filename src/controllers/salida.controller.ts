@@ -1,21 +1,16 @@
+import {authenticate} from '@loopback/authentication';
 import {
   Count,
   CountSchema,
   Filter,
   FilterExcludingWhere,
   repository,
-  Where,
+  Where
 } from '@loopback/repository';
 import {
-  post,
-  param,
-  get,
-  getModelSchemaRef,
-  patch,
-  put,
-  del,
-  requestBody,
-  response,
+  del, get,
+  getModelSchemaRef, param, patch, post, put, requestBody,
+  response
 } from '@loopback/rest';
 import {Salida} from '../models';
 import {SalidaRepository} from '../repositories';
@@ -23,9 +18,10 @@ import {SalidaRepository} from '../repositories';
 export class SalidaController {
   constructor(
     @repository(SalidaRepository)
-    public salidaRepository : SalidaRepository,
-  ) {}
+    public salidaRepository: SalidaRepository,
+  ) { }
 
+  @authenticate('funcionario')
   @post('/salidas')
   @response(200, {
     description: 'Salida model instance',
@@ -47,6 +43,7 @@ export class SalidaController {
     return this.salidaRepository.create(salida);
   }
 
+  @authenticate('funcionario')
   @get('/salidas/count')
   @response(200, {
     description: 'Salida model count',
@@ -58,6 +55,7 @@ export class SalidaController {
     return this.salidaRepository.count(where);
   }
 
+  @authenticate('funcionario')
   @get('/salidas')
   @response(200, {
     description: 'Array of Salida model instances',
@@ -76,6 +74,7 @@ export class SalidaController {
     return this.salidaRepository.find(filter);
   }
 
+  @authenticate('funcionario')
   @patch('/salidas')
   @response(200, {
     description: 'Salida PATCH success count',
@@ -95,6 +94,7 @@ export class SalidaController {
     return this.salidaRepository.updateAll(salida, where);
   }
 
+  @authenticate('funcionario')
   @get('/salidas/{id}')
   @response(200, {
     description: 'Salida model instance',
@@ -111,6 +111,7 @@ export class SalidaController {
     return this.salidaRepository.findById(id, filter);
   }
 
+  @authenticate('funcionario')
   @patch('/salidas/{id}')
   @response(204, {
     description: 'Salida PATCH success',
@@ -129,6 +130,7 @@ export class SalidaController {
     await this.salidaRepository.updateById(id, salida);
   }
 
+  @authenticate('funcionario')
   @put('/salidas/{id}')
   @response(204, {
     description: 'Salida PUT success',
@@ -140,6 +142,7 @@ export class SalidaController {
     await this.salidaRepository.replaceById(id, salida);
   }
 
+  @authenticate('admin')
   @del('/salidas/{id}')
   @response(204, {
     description: 'Salida DELETE success',

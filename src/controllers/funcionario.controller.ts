@@ -1,3 +1,4 @@
+import {authenticate} from '@loopback/authentication';
 import {service} from '@loopback/core';
 import {
   Count,
@@ -24,7 +25,6 @@ export class FuncionarioController {
     public authservice: AutenticacionService
   ) { }
 
-
   @post('/identificarPersona',
     {
       responses: {
@@ -50,6 +50,7 @@ export class FuncionarioController {
           nombre: f.nombre,
           grado: f.grado,
           telefono: f.telefono,
+          rol: f.rol,
         },
         tk: token
       }
@@ -58,6 +59,7 @@ export class FuncionarioController {
     }
   }
 
+  @authenticate('admin')
   @post('/funcionarios')
   @response(200, {
     description: 'Funcionario model instance',
@@ -82,6 +84,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.create(funcionario);
   }
 
+  @authenticate('admin')
   @get('/funcionarios/count')
   @response(200, {
     description: 'Funcionario model count',
@@ -93,6 +96,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.count(where);
   }
 
+  @authenticate('admin')
   @get('/funcionarios')
   @response(200, {
     description: 'Array of Funcionario model instances',
@@ -111,6 +115,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.find(filter);
   }
 
+  @authenticate('admin')
   @patch('/funcionarios')
   @response(200, {
     description: 'Funcionario PATCH success count',
@@ -130,6 +135,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.updateAll(funcionario, where);
   }
 
+  @authenticate('admin')
   @get('/funcionarios/{id}')
   @response(200, {
     description: 'Funcionario model instance',
@@ -146,6 +152,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.findById(id, filter);
   }
 
+  @authenticate('admin')
   @patch('/funcionarios/{id}')
   @response(204, {
     description: 'Funcionario PATCH success',
@@ -164,6 +171,7 @@ export class FuncionarioController {
     await this.funcionarioRepository.updateById(id, funcionario);
   }
 
+  @authenticate('admin')
   @put('/funcionarios/{id}')
   @response(204, {
     description: 'Funcionario PUT success',
@@ -175,6 +183,7 @@ export class FuncionarioController {
     await this.funcionarioRepository.replaceById(id, funcionario);
   }
 
+  @authenticate('admin')
   @del('/funcionarios/{id}')
   @response(204, {
     description: 'Funcionario DELETE success',

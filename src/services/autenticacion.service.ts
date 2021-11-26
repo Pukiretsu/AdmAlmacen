@@ -42,6 +42,7 @@ export class AutenticacionService {
           id: funcionario.id,
           placa: funcionario.placa,
           nombre: funcionario.nombre + " " + funcionario.apellidos,
+          rol: funcionario.rol
         }
       }, keys.jwtkey);
     return token;
