@@ -4,3 +4,5 @@ export * from './funcionario.repository';
 export * from './prestamo.repository';
 export * from './prestante.repository';
 export * from './salida.repository';
+export * from './dependencia.repository';
+export * from './grado.repository';
