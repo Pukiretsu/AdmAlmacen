@@ -1,0 +1,27 @@
+#logos
+{
+  background-color: white;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  padding-left: var(--elements-width-margin);
+  padding-right: var(--elements-width-margin);
+}
+
+#logos > * {
+  height: 9vh;
+}
+
+header
+{
+    padding: 0.2rem;
+    padding-left: var(--elements-width-margin);
+    color: white;
+    background-color: var(--bg-primary);
+}
+.header
+{
+    padding-top: 0.8em;
+    background-color: rgb(51, 102, 204);
+}

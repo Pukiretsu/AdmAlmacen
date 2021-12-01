@@ -1,1 +1,164 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  font-size: 25px;
+  font-family: 'Open Sans', sans-serif;
+  --bg-primary: #009bff;
+  --bg-secondary: #3366cc;
+  
+  --elements-width-margin: 2vw
+}
+
+html,
+body,
+.body
+{
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.body
+{
+  display: flex;
+  flex-direction: column;
+  background-color: #e5e5f7;
+}
+
+@media only screen and (max-width: 800px) and (max-height: 1000px)
+{
+  :root
+  {
+    font-size: 15px;
+  }
+  #mindefensa
+  {
+    display: none;
+  }
+}
+
+.viewport
+{
+  /* Position */
+  display: flex;
+  flex: auto;
+  justify-content: space-between;
+  align-items: center;
+  
+  /* Background */
+  background-color: #f8f8f8;
+  opacity: 0.8;
+  background-image:  radial-gradient(#3366cc 1.35px, transparent 1.35px), radial-gradient(#3366cc 1.35px, #f8f8f8 1.35px);
+  background-size: 54px 54px;
+  background-position: 0 0,27px 27px;
+}
+
+.sidebar
+{
+  display: flex;
+  align-self: stretch;
+}
+
+.main
+{
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  margin: 2rem;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.form__group
+{
+  position: relative;
+  padding: 15px 0 0;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.form__field
+{
+  font-family: inherit;
+  width: 100%;
+  border: 0;
+  border-bottom: 2px solid #9b9b9b;
+  outline: 0;
+  font-size: 1rem;
+  color: rgb(0, 0, 0);
+  padding: 7px 0;
+  background: transparent;
+  transition: border-color 0.2s;
+}
+
+.form__field::placeholder
+{
+  color: transparent;
+}
+
+.form__field:placeholder-shown ~ .form__label
+{
+  font-size: 1rem;
+  cursor: text;
+  top: 20px;
+}
+
+.form__label
+{
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.5rem;
+  color: #9b9b9b;
+}
+
+.form__field:focus {
+  padding-bottom: 6px;
+  font-weight: 700;
+  border-width: 3px;
+  border-image: linear-gradient(to right, var(--bg-secondary),var(--bg-primary));
+  border-image-slice: 1;
+}
+
+.form__field:focus ~ .form__label {
+  position: absolute;
+  top: 0;
+  display: block;
+  transition: 0.2s;
+  font-size: 0.5rem;
+  color: var(--bg-secondary);
+  font-weight: 700;
+}
+
+.form__field:required, .form__field:invalid {
+  box-shadow: none;
+}
+
+.bluebutton {
+	background:linear-gradient(to bottom, #007dc1 5%, #0061a7 100%);
+	background-color:#007dc1;
+	border-radius:28px;
+  width: fit-content;
+	border:1px solid #124d77;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	padding:11px 31px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #154682;
+}
+.bluebutton:hover {
+	background:linear-gradient(to bottom, #0061a7 5%, #007dc1 100%);
+	background-color:#0061a7;
+}
+
+.bluebutton:active {
+	position:relative;
+	top:1px;
+}
+.bluebutton:disabled
+{
+  background:linear-gradient(to bottom, #242424 5%, #3d3d3d 100%);
+	background-color:#0061a7;
+}

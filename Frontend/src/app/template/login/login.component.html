@@ -1,0 +1,21 @@
+<div id="login-view">
+  <h3 style="margin: 0;">Bienvenido de vuelta</h3>
+  <form [formGroup]="fgvalidator" id="login-form" (ngSubmit)="identifyFuncionario()">
+    <div class="form__group field">
+      <input formControlName="placa" type="input" class="form__field" placeholder="Placa" name="Placa" id='Placa' required />
+      <label for="Placa" class="form__label">Placa</label>
+    </div>
+
+    <div class="form__group field">
+      <input formControlName="cedula" type="input" class="form__field" placeholder="Cedula" name="Cedula" id='Cedula' required />
+      <label for="Cedula" class="form__label">Cédula</label>
+    </div>
+
+    <div class="form__group field">
+      <input formControlName="passwd" type="password" class="form__field" placeholder="Paswd" name="Paswd" id='Paswd' required />
+      <label for="Paswd" class="form__label">Contraseña</label>
+    </div>
+
+    <button [disabled]="!fgvalidator.valid"  type="submit" class="bluebutton" style="margin-top: 0.8rem;">Ingresar</button>
+  </form>
+</div>
