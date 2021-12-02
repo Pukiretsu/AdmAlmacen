@@ -1,13 +1,11 @@
-
-
 #login-view
 {
   margin: 5px;
-  background-color: rgba(241, 241, 241, 0.9);
+  background-color: rgba(241, 241, 241, 0.8);
   border: 0px;
   border-radius: 30px;
   padding: 1rem;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(2);
 }
 
 #login-form

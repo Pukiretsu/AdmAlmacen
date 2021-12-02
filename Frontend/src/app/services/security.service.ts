@@ -1,7 +1,6 @@
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { ModelData } from '../models/data.model';
 import { IdentifyModel} from '../models/identify.model';
 
@@ -11,8 +10,29 @@ import { IdentifyModel} from '../models/identify.model';
 export class SecurityService {
 
   url = "http://localhost:3000";
-  constructor(private request: HttpClient) { 
+  userDataOnSession = new BehaviorSubject<IdentifyModel>(new IdentifyModel());
 
+  constructor(private request: HttpClient) { 
+    this.CheckActiveSession();
+  }
+
+  CheckActiveSession()
+  {
+    let datos = this.ActiveSessioninfo();
+    if (datos)
+    {
+      this.refreshSessionData(JSON.parse(datos));
+    }
+  }
+  
+  refreshSessionData(data : IdentifyModel)
+  {
+    this.userDataOnSession.next(data);
+  }
+
+  GetSessionUserData()
+  {
+    return this.userDataOnSession.asObservable();
   }
 
   Identificar (placa: string,cedula: string, password: string): Observable<IdentifyModel>{
@@ -29,6 +49,7 @@ export class SecurityService {
   {
     let stringdata = JSON.stringify(data);
     localStorage.setItem("datosSesion", stringdata)
+    this.refreshSessionData(data);
   }
 
   GetSessionInfo()
@@ -48,5 +69,12 @@ export class SecurityService {
   deleteSessionInfo()
   {
     localStorage.removeItem("datosSesion");
+    this.refreshSessionData(new IdentifyModel())
+  }
+
+  ActiveSessioninfo()
+  {
+    let stringData = localStorage.getItem("datosSesion")
+    return stringData
   }
 }

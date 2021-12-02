@@ -21,17 +21,17 @@ import { PrestanteDeleteComponent } from './prestante-delete/prestante-delete.co
   declarations: [
   
     FuncionarioCreateComponent,
-       FuncionarioReadComponent,
-       FuncionarioUpdateComponent,
-       FuncionarioDeleteComponent,
-       ElementoCreateComponent,
-       ElementoUpdateComponent,
-       ElementoDeleteComponent,
-       ElementoReadComponent,
-       PrestamoDeleteComponent,
-       SalidaDeleteComponent,
-       EntradaDeleteComponent,
-       PrestanteDeleteComponent
+    FuncionarioReadComponent,
+    FuncionarioUpdateComponent,
+    FuncionarioDeleteComponent,
+    ElementoCreateComponent,
+    ElementoUpdateComponent,
+    ElementoDeleteComponent,
+    ElementoReadComponent,
+    PrestamoDeleteComponent,
+    SalidaDeleteComponent,
+    EntradaDeleteComponent,
+    PrestanteDeleteComponent
   ],
   imports: [
     CommonModule,

@@ -15,7 +15,7 @@
       <input formControlName="passwd" type="password" class="form__field" placeholder="Paswd" name="Paswd" id='Paswd' required />
       <label for="Paswd" class="form__label">Contraseña</label>
     </div>
-
+    <span *ngIf="invalidData" style="font-size: 20px; color: var(--bg-secondary);"><br> Datos incorrectos. <br> verifique y vuelva a intentarlo</span>
     <button [disabled]="!fgvalidator.valid"  type="submit" class="bluebutton" style="margin-top: 0.8rem;">Ingresar</button>
   </form>
 </div>

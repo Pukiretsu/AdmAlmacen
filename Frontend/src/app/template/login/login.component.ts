@@ -1,6 +1,6 @@
-import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { SecurityService } from 'src/app/services/security.service';
 
@@ -11,6 +11,8 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class LoginComponent implements OnInit {
 
+  invalidData : boolean = false
+
   fgvalidator : FormGroup = this.fb.group(
     {
       'placa': ['',[Validators.required]],
@@ -18,10 +20,11 @@ export class LoginComponent implements OnInit {
       'passwd': ['',[Validators.required]]
     });
 
-  constructor(private fb: FormBuilder, private securityService : SecurityService) { }
+  constructor(private fb: FormBuilder, private securityService : SecurityService, private router : Router) { }
 
   ngOnInit(): void 
   {
+    this.invalidData=false
   }
 
   identifyFuncionario()
@@ -32,9 +35,10 @@ export class LoginComponent implements OnInit {
     this.securityService.Identificar(placa,cedula,pass).subscribe(
       (data:any) => {
         this.securityService.SessionStorage(data);
+        this.router.navigate(['/inicio'])
       },
       (error: any) => {
-        // No Logrado
+        this.invalidData=true;
       }
     )
   }
