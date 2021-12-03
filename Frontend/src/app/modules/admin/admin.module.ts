@@ -14,7 +14,8 @@ import { PrestamoDeleteComponent } from './prestamo-delete/prestamo-delete.compo
 import { SalidaDeleteComponent } from './salida-delete/salida-delete.component';
 import { EntradaDeleteComponent } from './entrada-delete/entrada-delete.component';
 import { PrestanteDeleteComponent } from './prestante-delete/prestante-delete.component';
-
+import { FuncionarioIndexComponent } from './funcionarios/funcionario-index/funcionario-index.component';
+import { ElementoIndexComponent } from './elementos/elemento-index/elemento-index.component';
 
 
 @NgModule({
@@ -31,7 +32,10 @@ import { PrestanteDeleteComponent } from './prestante-delete/prestante-delete.co
     PrestamoDeleteComponent,
     SalidaDeleteComponent,
     EntradaDeleteComponent,
-    PrestanteDeleteComponent
+    PrestanteDeleteComponent,
+    FuncionarioIndexComponent,
+    ElementoIndexComponent,
+    
   ],
   imports: [
     CommonModule,

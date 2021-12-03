@@ -1,9 +1,10 @@
 :root {
-  font-size: 25px;
+  font-size: 20px;
   font-family: 'Open Sans', sans-serif;
   --bg-primary: #009bff;
   --bg-secondary: #3366cc;
   
+
   --elements-width-margin: 2vw
 }
 
@@ -20,7 +21,7 @@ body,
 {
   display: flex;
   flex-direction: column;
-  background-color: #e5e5f7;
+  background-color: #ffffff;
 }
 
 @media only screen and (max-width: 800px) and (max-height: 1000px)
@@ -29,9 +30,15 @@ body,
   {
     font-size: 15px;
   }
+
   #mindefensa
   {
     display: none;
+  }
+
+  .viewport
+  {
+    flex-direction: column-reverse;
   }
 }
 
@@ -44,8 +51,8 @@ body,
   align-items: center;
   
   /* Background */
-  background-color: #f8f8f8;
-  opacity: 0.8;
+  background-color: #dbe3ea;
+  opacity: 0.6;
   background-image:  radial-gradient(#3366cc 1.35px, transparent 1.35px), radial-gradient(#3366cc 1.35px, #f8f8f8 1.35px);
   background-size: 54px 54px;
   background-position: 0 0,27px 27px;

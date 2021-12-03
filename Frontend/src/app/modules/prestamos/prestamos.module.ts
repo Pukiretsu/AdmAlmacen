@@ -14,6 +14,8 @@ import { EntradaReadComponent } from './entradas/entrada-read/entrada-read.compo
 import { PrestanteCreateComponent } from './prestante/prestante-create/prestante-create.component';
 import { PrestanteUpdateComponent } from './prestante/prestante-update/prestante-update.component';
 import { PrestanteReadComponent } from './prestante/prestante-read/prestante-read.component';
+import { PrestamoIndexComponent } from './prestamo-index/prestamo-index.component';
+import { PrestanteIndexComponent } from './prestante/prestante-index/prestante-index.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import { PrestanteReadComponent } from './prestante/prestante-read/prestante-rea
     EntradaReadComponent,
     PrestanteCreateComponent,
     PrestanteUpdateComponent,
-    PrestanteReadComponent
+    PrestanteReadComponent,
+    PrestamoIndexComponent,
+    PrestanteIndexComponent
   ],
   imports: [
     CommonModule,
