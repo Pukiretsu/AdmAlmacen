@@ -1,1 +1,67 @@
-<p>elemento-create works!</p>
+<body class="viewportbody">
+    <div class="viewportheader">
+        <button class="bluebutton" routerLink="..">
+            <span class="buttonText">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Volver
+            </span>
+        </button>
+
+        <h2>Nuevo Elemento</h2>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+
+        <div class="container" style="width: 80%;">
+            <form [formGroup]="fgElementValidator" (ngSubmit)="saveElement()" style="display: flex; flex-direction: column; ">
+                <div class="form__group field" style="width: 20rem;">    
+                    <input formControlName="numeroInventario" type="input" class="form__field" placeholder="N° inventario" name="numeroInventario" id='numeroInventario' required />
+                    <label for="numeroInventario" class="form__label">Nº de Inventario</label>
+                </div>
+    
+                <div class="container-column">
+                    <div class="container-element-Centered">
+                        <div class="form__group field">    
+                            <input formControlName="clase" type="input" class="form__field" placeholder="clase" name="clase" id='Clase' required />
+                            <label for="Clase" class="form__label">Clase</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="marca" type="input" class="form__field" placeholder="Marca" name="Marca" id='Marca' required />
+                            <label for="Marca" class="form__label">Marca</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="model" type="input" class="form__field" placeholder="Modelo" name="model" id='Modelo' required />
+                            <label for="Modelo" class="form__label">Modelo</label>
+                        </div>   
+                    </div>
+                    
+                    <div class="container-element-Centered">            
+                        <div class="form__group field">
+                            <input formControlName="serie" type="input" class="form__field" placeholder="serie" name="serie" id='Serie' required />
+                            <label for="Serie" class="form__label">Serie</label>
+                        </div>
+                
+                        <div class="form__group field">
+                            <input formControlName="plazoMaximo" type="number" min="0" class="form__field" placeholder="Plazo" name="plazoMaximo" id='PlazoMaximo' required />
+                            <label for="PlazoMaximo" class="form__label">Plazo Maximo (Dias)</label>
+                        </div>
+                        
+                        <div style="padding: 1rem;">
+                            <button [disabled]="!fgElementValidator.valid" class="bluebutton" type="submit" name="action">
+                                <span class="buttonText" style="padding-right:1rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    Crear
+                                </span>  
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</body>

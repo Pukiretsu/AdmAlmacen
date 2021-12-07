@@ -5,3 +5,4 @@ export * from './ping.controller';
 export * from './prestamo.controller';
 export * from './prestante.controller';
 export * from './salida.controller';
+export * from './grado.controller';

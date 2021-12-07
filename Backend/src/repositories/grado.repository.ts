@@ -5,7 +5,7 @@ import {Grado, GradoRelations} from '../models';
 
 export class GradoRepository extends DefaultCrudRepository<
   Grado,
-  typeof Grado.prototype.codGrado,
+  typeof Grado.prototype.id,
   GradoRelations
 > {
   constructor(

@@ -61,7 +61,7 @@ export class ElementoController {
     return this.elementoRepository.count(where);
   }
 
-  @authenticate('funcionario')
+  @authenticate.skip() /*('funcionario')*/
   @get('/elementos')
   @response(200, {
     description: 'Array of Elemento model instances',
@@ -100,7 +100,7 @@ export class ElementoController {
     return this.elementoRepository.updateAll(elemento, where);
   }
 
-  @authenticate('funcionario')
+  @authenticate.skip()
   @get('/elementos/{id}')
   @response(200, {
     description: 'Elemento model instance',
@@ -148,7 +148,7 @@ export class ElementoController {
     await this.elementoRepository.replaceById(id, elemento);
   }
 
-  @authenticate('funcionario')
+  @authenticate.skip()
   @del('/elementos/{id}')
   @response(204, {
     description: 'Elemento DELETE success',

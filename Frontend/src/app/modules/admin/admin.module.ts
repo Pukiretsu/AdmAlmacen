@@ -15,12 +15,11 @@ import { SalidaDeleteComponent } from './salida-delete/salida-delete.component';
 import { EntradaDeleteComponent } from './entrada-delete/entrada-delete.component';
 import { PrestanteDeleteComponent } from './prestante-delete/prestante-delete.component';
 import { FuncionarioIndexComponent } from './funcionarios/funcionario-index/funcionario-index.component';
-import { ElementoIndexComponent } from './elementos/elemento-index/elemento-index.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
   declarations: [
-  
     FuncionarioCreateComponent,
     FuncionarioReadComponent,
     FuncionarioUpdateComponent,
@@ -34,12 +33,12 @@ import { ElementoIndexComponent } from './elementos/elemento-index/elemento-inde
     EntradaDeleteComponent,
     PrestanteDeleteComponent,
     FuncionarioIndexComponent,
-    ElementoIndexComponent,
-    
   ],
   imports: [
     CommonModule,
-    AdminRoutingModule
+    AdminRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class AdminModule { }

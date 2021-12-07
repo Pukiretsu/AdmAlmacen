@@ -1,6 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ElementoIndexComponent } from './elementos/elemento-index/elemento-index.component';
+import { ElementoCreateComponent } from './elementos/elemento-create/elemento-create.component';
+import { ElementoDeleteComponent } from './elementos/elemento-delete/elemento-delete.component';
+import { ElementoReadComponent } from './elementos/elemento-read/elemento-read.component';
+import { ElementoUpdateComponent } from './elementos/elemento-update/elemento-update.component';
 import { FuncionarioCreateComponent } from './funcionarios/funcionario-create/funcionario-create.component';
 import { FuncionarioIndexComponent } from './funcionarios/funcionario-index/funcionario-index.component';
 
@@ -14,9 +18,21 @@ const routes: Routes =
     path:'funcionarios',
     component: FuncionarioIndexComponent
   },
-  {
+  {    
     path:'elementos',
-    component: ElementoIndexComponent
+    component: ElementoReadComponent
+  },
+  {
+    path:'elementos/Eliminar/:id',
+    component: ElementoDeleteComponent
+  },
+  {
+    path:'elementos/Editar/:id',
+    component: ElementoUpdateComponent
+  },
+  {
+    path:'elementos/Crear',
+    component: ElementoCreateComponent
   },
 ];
 

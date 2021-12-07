@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import * as crypto from 'crypto-js';
 import { SecurityService } from 'src/app/services/security.service';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,14 +12,24 @@ import { SecurityService } from 'src/app/services/security.service';
 })
 export class LoginComponent implements OnInit {
 
+
+
   invalidData : boolean = false
 
   fgvalidator : FormGroup = this.fb.group(
+  {
+    'placa': ['',[Validators.required]],
+    'cedula': ['',[Validators.required]],
+    'passwd': ['',[Validators.required]]
+  });
+
+  KeyUpEnter(keyEvent: KeyboardEvent)
+  {
+    if (keyEvent.key == 'Enter')
     {
-      'placa': ['',[Validators.required]],
-      'cedula': ['',[Validators.required]],
-      'passwd': ['',[Validators.required]]
-    });
+      document.getElementById("submmit-login")?.click();
+    }
+  }
 
   constructor(private fb: FormBuilder, private securityService : SecurityService, private router : Router) { }
 

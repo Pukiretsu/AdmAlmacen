@@ -7,7 +7,13 @@ export class Grado extends Entity {
     id: true,
     generated: true,
   })
-  codGrado?: string;
+  id?: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
+  codigoGrado: string;
 
   @property({
     type: 'string',
@@ -22,7 +28,7 @@ export class Grado extends Entity {
 }
 
 export interface GradoRelations {
-  // describe navigational properties here
+  
 }
 
 export type GradoWithRelations = Grado & GradoRelations;
