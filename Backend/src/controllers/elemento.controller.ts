@@ -61,7 +61,7 @@ export class ElementoController {
     return this.elementoRepository.count(where);
   }
 
-  @authenticate.skip() /*('funcionario')*/
+  @authenticate('funcionario') /*('funcionario')*/
   @get('/elementos')
   @response(200, {
     description: 'Array of Elemento model instances',

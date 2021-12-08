@@ -5,8 +5,7 @@ import {Grado, GradoRelations} from '../models';
 
 export class GradoRepository extends DefaultCrudRepository<
   Grado,
-  typeof Grado.prototype.id,
-  GradoRelations
+  typeof Grado.prototype.id
 > {
   constructor(
     @inject('datasources.monGODb') dataSource: MonGoDbDataSource,

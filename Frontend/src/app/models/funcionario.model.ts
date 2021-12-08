@@ -6,6 +6,7 @@ export class ModelFuncionario
     nombre?: string;
     apellidos?: string;
     grado?: string;
+    dependencia?: string;
     telefono?: string;
     rol?: string;
     password?:string;

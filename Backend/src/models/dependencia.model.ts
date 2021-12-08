@@ -7,7 +7,7 @@ export class Dependencia extends Entity {
     id: true,
     generated: true,
   })
-  codDependencia?: string;
+  id?: string;
 
   @property({
     type: 'string',

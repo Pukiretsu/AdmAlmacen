@@ -6,3 +6,4 @@ export * from './prestamo.controller';
 export * from './prestante.controller';
 export * from './salida.controller';
 export * from './grado.controller';
+export * from './dependencia.controller';

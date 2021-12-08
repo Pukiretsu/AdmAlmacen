@@ -1,3 +1,4 @@
+import { authenticate } from '@loopback/authentication';
 import {
   Count,
   CountSchema,
@@ -20,13 +21,14 @@ import {
 import {Grado} from '../models';
 import {GradoRepository} from '../repositories';
 
+@authenticate("admin")
 export class GradoController {
   constructor(
     @repository(GradoRepository)
     public gradoRepository : GradoRepository,
   ) {}
 
-  @post('/grados')
+  @post('/grado')
   @response(200, {
     description: 'Grado model instance',
     content: {'application/json': {schema: getModelSchemaRef(Grado)}},
@@ -47,7 +49,7 @@ export class GradoController {
     return this.gradoRepository.create(grado);
   }
 
-  @get('/grados/count')
+  @get('/grado/count')
   @response(200, {
     description: 'Grado model count',
     content: {'application/json': {schema: CountSchema}},
@@ -58,7 +60,8 @@ export class GradoController {
     return this.gradoRepository.count(where);
   }
 
-  @get('/grados')
+  @authenticate.skip()
+  @get('/grado')
   @response(200, {
     description: 'Array of Grado model instances',
     content: {
@@ -76,7 +79,7 @@ export class GradoController {
     return this.gradoRepository.find(filter);
   }
 
-  @patch('/grados')
+  @patch('/grado')
   @response(200, {
     description: 'Grado PATCH success count',
     content: {'application/json': {schema: CountSchema}},
@@ -95,7 +98,8 @@ export class GradoController {
     return this.gradoRepository.updateAll(grado, where);
   }
 
-  @get('/grados/{id}')
+  @authenticate.skip()
+  @get('/grado/{id}')
   @response(200, {
     description: 'Grado model instance',
     content: {
@@ -111,7 +115,7 @@ export class GradoController {
     return this.gradoRepository.findById(id, filter);
   }
 
-  @patch('/grados/{id}')
+  @patch('/grado/{id}')
   @response(204, {
     description: 'Grado PATCH success',
   })
@@ -129,7 +133,7 @@ export class GradoController {
     await this.gradoRepository.updateById(id, grado);
   }
 
-  @put('/grados/{id}')
+  @put('/grado/{id}')
   @response(204, {
     description: 'Grado PUT success',
   })
@@ -140,7 +144,7 @@ export class GradoController {
     await this.gradoRepository.replaceById(id, grado);
   }
 
-  @del('/grados/{id}')
+  @del('/grado/{id}')
   @response(204, {
     description: 'Grado DELETE success',
   })

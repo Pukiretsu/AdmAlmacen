@@ -9,11 +9,7 @@ export class Grado extends Entity {
   })
   id?: string;
 
-  @property({
-    type: 'string',
-    required: true,
-  })
-  codigoGrado: string;
+
 
   @property({
     type: 'string',

@@ -5,8 +5,7 @@ import {Dependencia, DependenciaRelations} from '../models';
 
 export class DependenciaRepository extends DefaultCrudRepository<
   Dependencia,
-  typeof Dependencia.prototype.codDependencia,
-  DependenciaRelations
+  typeof Dependencia.prototype.id
 > {
   constructor(
     @inject('datasources.monGODb') dataSource: MonGoDbDataSource,
