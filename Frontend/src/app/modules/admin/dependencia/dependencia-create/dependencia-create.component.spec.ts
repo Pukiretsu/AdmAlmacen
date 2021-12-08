@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PrestamoIndexComponent } from './prestamo-index.component';
+import { DependenciaCreateComponent } from './dependencia-create.component';
 
-describe('PrestamoIndexComponent', () => {
-  let component: PrestamoIndexComponent;
-  let fixture: ComponentFixture<PrestamoIndexComponent>;
+describe('DependenciaCreateComponent', () => {
+  let component: DependenciaCreateComponent;
+  let fixture: ComponentFixture<DependenciaCreateComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PrestamoIndexComponent ]
+      declarations: [ DependenciaCreateComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PrestamoIndexComponent);
+    fixture = TestBed.createComponent(DependenciaCreateComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
