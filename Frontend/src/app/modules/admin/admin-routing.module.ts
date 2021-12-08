@@ -6,16 +6,21 @@ import { ElementoReadComponent } from './elementos/elemento-read/elemento-read.c
 import { ElementoUpdateComponent } from './elementos/elemento-update/elemento-update.component';
 import { FuncionarioCreateComponent } from './funcionarios/funcionario-create/funcionario-create.component';
 import { FuncionarioReadComponent } from './funcionarios/funcionario-read/funcionario-read.component';
+import { FuncionarioUpdateComponent } from './funcionarios/funcionario-update/funcionario-update.component';
 
 const routes: Routes = 
 [
   {
-    path:'funcionario-nuevo',
+    path:'funcionarios',
+    component: FuncionarioReadComponent
+  },
+  {
+    path:'funcionarios/Crear',
     component: FuncionarioCreateComponent
   },
   {
-    path:'funcionarios',
-    component: FuncionarioReadComponent
+    path:'funcionarios/Editar/:id',
+    component: FuncionarioUpdateComponent
   },
   {    
     path:'elementos',

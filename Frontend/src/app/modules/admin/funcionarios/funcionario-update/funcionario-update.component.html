@@ -1,1 +1,101 @@
-<p>funcionario-update works!</p>
+<body class="viewportbody">
+    <div class="viewportheader">
+        <button class="bluebutton" routerLink="..">
+            <span class="buttonText">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Volver
+            </span>
+        </button>
+
+        <h2>Editar Elemento</h2>
+    </div>
+    <div style="display: flex; align-items: center; justify-content: center;">
+        <div class="container" style="width: 80%;">
+            <form [formGroup]="fgFuncionarioValidator" (ngSubmit)="EditFuncionario()" style="display: flex; flex-direction: column; ">
+                <input type="hidden" formControlName="id" />
+                <div class="container-column">
+                    <div class="container-element-Centered">
+
+                        <div class="form__group field">    
+                            <input formControlName="cedula" type="input" class="form__field" placeholder="cedula" name="cedula" id='cedula' required />
+                            <label for="cedula" class="form__label">Cedula</label>
+                        </div>
+
+                        <div class="form__group field">    
+                            <input formControlName="placa" type="input" class="form__field" placeholder="placa" name="placa" id='placa' required />
+                            <label for="placa" class="form__label">Placa</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="nombre" type="input" class="form__field" placeholder="nombre" name="nombre" id='nombre' required />
+                            <label for="nombre" class="form__label">Nombre</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="apellidos" type="input" class="form__field" placeholder="apellidos" name="apellidos" id='apellidos' required />
+                            <label for="apellidos" class="form__label">Apellidos</label>
+                        </div>
+                        
+                        
+                        <div class="form__group field" style="align-self: center;">
+                            <input formControlName="password" type="input" class="form__field" placeholder="password" name="password" id='password' required />
+                            <label for="password" class="form__label">Contraseña</label>
+                            <span  style="color: var(--bg-secondary); font-size: 0.8rem;">La contraseña debe contener minimo 8 caracteres y al menos una mayuscula, minuscula, un numero y un caracter especial</span>
+                        </div>
+                    </div>
+                    
+                    <div class="container-element-Centered">            
+
+                        <div class="form__group field">
+                            <input formControlName="telefono" type="input" class="form__field" placeholder="telefono" name="telefono" id='telefono' required />
+                            <label for="telefono" class="form__label">Telefono</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <label for="rol" class="form__label">Rol</label>
+                            <select formControlName="rol" class="form__field" placeholder="rol" name="rol" id='rol' required>
+                                <option value=""> Rol </option>
+                                <option value="admin"> Administrador </option>
+                                <option value="funcionario"> Funcionario </option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <label for="grado" class="form__label">Grado</label>
+                            <select formControlName="grado" class="form__field" placeholder="grado" name="grado" id='grado' required>
+                                <option value=""> Grado </option>
+                                <option value="admin"> #TODO: Cargar desde un servicio que consuma la coleccion de grado</option>
+                            </select>
+                        </div>
+                        
+                        <!-- #TODO: Refactorizar Funcionario para incluir Dependencia en el modelo -->
+                        
+                        <div class="form__group field">
+                            <label for="dependencia" class="form__label">Dependencia</label>
+                            <select  class="form__field" placeholder="dependencia" name="dependencia" id='dependencia' required>
+                                <option value="">Dependencia</option>
+                                <option value="admin"> #TODO: Cargar desde un servicio que consuma la coleccion de dependencia </option>
+                            </select>
+                        </div>
+                        
+                        
+                        <div style="padding: 1rem;">
+                            <button [disabled]="!fgFuncionarioValidator.valid" class="bluebutton" type="submit" name="action">
+                                <span class="buttonText" style="padding-right:1rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+                                    </svg>
+                                    Actualizar
+                                </span>  
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>      
+        </div>
+    </div>
+</body>

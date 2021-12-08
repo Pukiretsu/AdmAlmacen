@@ -17,6 +17,7 @@ import {Credentials, Funcionario} from '../models';
 import {FuncionarioRepository} from '../repositories';
 import {AutenticacionService} from '../services';
 
+@authenticate('admin')
 export class FuncionarioController {
   constructor(
     @repository(FuncionarioRepository)
@@ -24,7 +25,7 @@ export class FuncionarioController {
     @service(AutenticacionService)
     public authservice: AutenticacionService
   ) { }
-
+  @authenticate.skip()
   @post('/identificarPersona',
     {
       responses: {
@@ -59,7 +60,6 @@ export class FuncionarioController {
     }
   }
 
-  @authenticate('admin')
   @post('/funcionarios')
   @response(200, {
     description: 'Funcionario model instance',
@@ -84,7 +84,6 @@ export class FuncionarioController {
     return this.funcionarioRepository.create(funcionario);
   }
 
-  @authenticate('admin')
   @get('/funcionarios/count')
   @response(200, {
     description: 'Funcionario model count',
@@ -96,7 +95,6 @@ export class FuncionarioController {
     return this.funcionarioRepository.count(where);
   }
 
-  @authenticate('admin')
   @get('/funcionarios')
   @response(200, {
     description: 'Array of Funcionario model instances',
@@ -115,7 +113,6 @@ export class FuncionarioController {
     return this.funcionarioRepository.find(filter);
   }
 
-  @authenticate('admin')
   @patch('/funcionarios')
   @response(200, {
     description: 'Funcionario PATCH success count',
@@ -135,7 +132,6 @@ export class FuncionarioController {
     return this.funcionarioRepository.updateAll(funcionario, where);
   }
 
-  @authenticate('admin')
   @get('/funcionarios/{id}')
   @response(200, {
     description: 'Funcionario model instance',
@@ -152,7 +148,6 @@ export class FuncionarioController {
     return this.funcionarioRepository.findById(id, filter);
   }
 
-  @authenticate('admin')
   @patch('/funcionarios/{id}')
   @response(204, {
     description: 'Funcionario PATCH success',

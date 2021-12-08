@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { ModelData } from '../models/data.model';
 import { IdentifyModel} from '../models/identify.model';
 
 @Injectable({

@@ -3,7 +3,7 @@
         <div class="modal-content">
           
             <span class="close" (click)="closeConfirmation()" >&times;</span>
-            <h2 style="color: var(--bg-secondary);">Advertencia</h2>
+            <h2 style="color: var(--bg-secondary);">ADVERTENCIA</h2>
             <p>¿Está seguro de eliminar el elemento?, <strong> esta acción no se puede DESHACER </strong>  </p>
           
             <div class="container-column">
@@ -17,7 +17,7 @@
                     </span>
                 </button>
 
-                <button class="plainButton warnHover" (click)="closeConfirmation()">
+                <button class="warnbutton" (click)="deleteElemento()">
                     <span class="buttonText"> 
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                             <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
@@ -44,22 +44,22 @@
     <div class="container">
         <ul class="responsive-table">
             <li class="table-header">
-                <div class="col col-id"> N° Inventario   </div>
-                <div class="col col-2"> Clase            </div>
-                <div class="col col-3"> Marca            </div>
-                <div class="col col-4"> Modelo           </div>
-                <div class="col col-5"> Serie            </div>
-                <div class="col col-6"> Plazo (Dias)     </div>
-                <div class="col col-7"> Acciones         </div>
+                <div class="col col-20"> N° Inventario   </div>
+                <div class="col col-10"> Clase            </div>
+                <div class="col col-10"> Marca            </div>
+                <div class="col col-10"> Modelo           </div>
+                <div class="col col-10"> Serie            </div>
+                <div class="col col-10"> Plazo (Dias)     </div>
+                <div class="col col-20"> Acciones         </div>
             </li>
             <li class="table-row" *ngFor="let p of elementoList; let i = index" [attr.data-index]="i">
-                <div class="col col-id" data-label="N° Inventario">{{p.numeroInventario}}</div>
-                <div class="col col-2" data-label="Clase">{{p.clase}}</div>
-                <div class="col col-3" data-label="Marca">{{p.marca}}</div>
-                <div class="col col-4" data-label="Modelo">{{p.model}}</div>
-                <div class="col col-5" data-label="Serie">{{p.serie}}</div>
-                <div class="col col-6" data-label="Plazo Maxímo">{{p.plazoMaximo}}</div>
-                <div class="col col-7" data-label="Acciones">
+                <div class="col col-20" data-label="N° Inventario">{{p.numeroInventario}}</div>
+                <div class="col col-10" data-label="Clase">{{p.clase}}</div>
+                <div class="col col-10" data-label="Marca">{{p.marca}}</div>
+                <div class="col col-10" data-label="Modelo">{{p.model}}</div>
+                <div class="col col-10" data-label="Serie">{{p.serie}}</div>
+                <div class="col col-10" data-label="Plazo Maxímo">{{p.plazoMaximo}}</div>
+                <div class="col col-20" data-label="Acciones">
                     <button class="borderbtn draw-border" routerLink="./Editar/{{p.id}}" style="margin: 0.5rem;">
                         <span class="buttonText"> 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

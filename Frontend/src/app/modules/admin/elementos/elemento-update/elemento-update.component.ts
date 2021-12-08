@@ -30,7 +30,7 @@ export class ElementoUpdateComponent implements OnInit {
     private route: ActivatedRoute) { }
 
 
-  GetProduct()
+  GetElemento()
   {
     this.elementoServ.readElementobyID(this.id).subscribe((data:ModelElemento)=>{
       this.fgElementValidator.controls["id"].setValue(data.id)
@@ -72,7 +72,7 @@ export class ElementoUpdateComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params["id"]
-    this.GetProduct()
+    this.GetElemento()
   }
 
 }

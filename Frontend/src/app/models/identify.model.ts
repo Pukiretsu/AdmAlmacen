@@ -1,7 +1,7 @@
-import { ModelData } from "./data.model";
+import { ModelFuncionario } from "./funcionario.model";
 
 export class IdentifyModel 
 {
-    data?: ModelData;
+    data?: ModelFuncionario;
     tk?: string;
 }

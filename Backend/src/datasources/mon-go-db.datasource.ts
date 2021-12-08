@@ -1,10 +1,11 @@
 import {inject, lifeCycleObserver, LifeCycleObserver} from '@loopback/core';
+import {keys} from '../keys/keys';
 import {juggler} from '@loopback/repository';
 
 const config = {
   name: 'monGODb',
   connector: 'mongodb',
-  url: 'mongodb+srv://SysAdminAlmacen:RgW3aUmUNCQylJfI@clusterwebprogramming.9yxbt.mongodb.net/almacenTelematica?retryWrites=true&w=majority',
+  url: keys.url,
   host: '',
   port: 0,
   user: '',
