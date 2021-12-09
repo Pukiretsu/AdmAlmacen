@@ -95,6 +95,7 @@ export class FuncionarioController {
     return this.funcionarioRepository.count(where);
   }
 
+  @authenticate.skip()
   @get('/funcionarios')
   @response(200, {
     description: 'Array of Funcionario model instances',

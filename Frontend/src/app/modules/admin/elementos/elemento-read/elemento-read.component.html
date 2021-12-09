@@ -44,22 +44,22 @@
     <div class="container">
         <ul class="responsive-table">
             <li class="table-header">
-                <div class="col col-20"> N° Inventario   </div>
-                <div class="col col-10"> Clase            </div>
+                <div class="col col-20"> N° Inventario    </div>
+                <div class="col col-15"> Clase            </div>
                 <div class="col col-10"> Marca            </div>
                 <div class="col col-10"> Modelo           </div>
                 <div class="col col-10"> Serie            </div>
-                <div class="col col-10"> Plazo (Dias)     </div>
-                <div class="col col-20"> Acciones         </div>
+                <div class="col col-5"> Plazo (Dias)        </div>
+                <div class="col col-10"> Acciones         </div>
             </li>
             <li class="table-row" *ngFor="let p of elementoList; let i = index" [attr.data-index]="i">
                 <div class="col col-20" data-label="N° Inventario">{{p.numeroInventario}}</div>
-                <div class="col col-10" data-label="Clase">{{p.clase}}</div>
+                <div class="col col-15" data-label="Clase">{{p.clase}}</div>
                 <div class="col col-10" data-label="Marca">{{p.marca}}</div>
                 <div class="col col-10" data-label="Modelo">{{p.model}}</div>
                 <div class="col col-10" data-label="Serie">{{p.serie}}</div>
-                <div class="col col-10" data-label="Plazo Maxímo">{{p.plazoMaximo}}</div>
-                <div class="col col-20" data-label="Acciones">
+                <div class="col col-5" data-label="Plazo Maxímo">{{p.plazoMaximo}}</div>
+                <div class="col col-10" data-label="Acciones">
                     <button class="borderbtn draw-border" routerLink="./Editar/{{p.id}}" style="margin: 0.5rem;">
                         <span class="buttonText"> 
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16">

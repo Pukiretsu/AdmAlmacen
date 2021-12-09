@@ -42,6 +42,10 @@
                         <div class="form__group field" style="align-self: center;">
                             <input formControlName="password" type="input" class="form__field" placeholder="password" name="password" id='password' required />
                             <label for="password" class="form__label">Contraseña</label>
+<!--                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye" viewBox="0 0 16 16">
+                                <path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/>
+                                <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/>
+                            </svg>   --> <!-- #TODO Implementar un switch para mostrar y ocultar la contraseña -->
                             <span  style="color: var(--bg-secondary); font-size: 0.8rem;">La contraseña debe contener minimo 8 caracteres y al menos una mayuscula, minuscula, un numero y un caracter especial</span>
                         </div>
                     </div>
@@ -66,17 +70,15 @@
                             <label for="grado" class="form__label">Grado</label>
                             <select formControlName="grado" class="form__field" placeholder="grado" name="grado" id='grado' required>
                                 <option value=""> Grado </option>
-                                <option value="admin"> #TODO: Cargar desde un servicio que consuma la coleccion de grado</option>
+                                <option *ngFor="let p of gradoList" value="{{p.id}}">{{p.nombreGrado}}</option>
                             </select>
                         </div>
                         
-                        <!-- #TODO: Refactorizar Funcionario para incluir Dependencia en el modelo -->
-                        
                         <div class="form__group field">
                             <label for="dependencia" class="form__label">Dependencia</label>
-                            <select  class="form__field" placeholder="dependencia" name="dependencia" id='dependencia' required>
+                            <select  formControlName="dependencia" class="form__field" placeholder="dependencia" name="dependencia" id='dependencia' required>
                                 <option value="">Dependencia</option>
-                                <option value="admin"> #TODO: Cargar desde un servicio que consuma la coleccion de dependencia </option>
+                                <option *ngFor="let p of dependenciaList" value="{{p.id}}">{{p.nombreDependencia}}</option>
                             </select>
                         </div>
                         

@@ -44,6 +44,12 @@ export class Funcionario extends Entity {
     type: 'string',
     required: true,
   })
+  dependencia: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   telefono: string;
 
   @property({
