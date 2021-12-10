@@ -1,22 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ModelFuncionario } from '../models/funcionario.model';
+import { ModelEntrada } from '../models/entrada.model';
 import { SecurityService } from './security.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FuncionariosService {
+export class EntradasService {
   url = "http://localhost:3000";
   token = " ";
   constructor(private request : HttpClient, private securityServ: SecurityService) {
     this.token = securityServ.getToken()
    }
 
-  readFuncionarios():Observable<ModelFuncionario[]>
+  readEntradas():Observable<ModelEntrada[]>
   {
-    return this.request.get<ModelFuncionario[]>(`${this.url}/funcionarios`,
+    return this.request.get<ModelEntrada[]>(`${this.url}/entradas`,
     {
       headers: new HttpHeaders(
         {
@@ -25,9 +25,9 @@ export class FuncionariosService {
     });
   }
 
-  readFuncionariobyID(id: string):Observable<ModelFuncionario>
+  readEntradabyID(id: string):Observable<ModelEntrada>
   {
-    return this.request.get<ModelFuncionario>(`${this.url}/funcionarios/${id}`,
+    return this.request.get<ModelEntrada>(`${this.url}/entradas/${id}`,
     {
       headers: new HttpHeaders(
         {
@@ -36,9 +36,9 @@ export class FuncionariosService {
     });
   }
 
-  CreateFuncionario(Funcionario: ModelFuncionario) : Observable<ModelFuncionario>
+  CreateEntrada(Entrada: ModelEntrada) : Observable<ModelEntrada>
   {
-    return this.request.post<ModelFuncionario>(`${this.url}/funcionarios`, Funcionario,
+    return this.request.post<ModelEntrada>(`${this.url}/entradas`, Entrada,
     {
       headers: new HttpHeaders(
         {
@@ -47,9 +47,9 @@ export class FuncionariosService {
     })
   }
 
-  UpdateFuncionario(Funcionario: ModelFuncionario) : Observable<ModelFuncionario>
+  UpdateEntrada(Entrada: ModelEntrada) : Observable<ModelEntrada>
   {
-    return this.request.put<ModelFuncionario>(`${this.url}/funcionarios/${Funcionario.id}`, Funcionario,
+    return this.request.put<ModelEntrada>(`${this.url}/entradas/${Entrada.id}`, Entrada,
     {
       headers: new HttpHeaders(
         {
@@ -58,9 +58,9 @@ export class FuncionariosService {
     })
   }
 
-  DeleteFuncionario(Funcionario : ModelFuncionario) : Observable <any>
+  DeleteEntrada(Entrada : ModelEntrada) : Observable <any>
   {
-    return this.request.delete(`${this.url}/funcionarios/${Funcionario.id}`,
+    return this.request.delete(`${this.url}/entradas/${Entrada.id}`,
     {
       headers: new HttpHeaders(
         {

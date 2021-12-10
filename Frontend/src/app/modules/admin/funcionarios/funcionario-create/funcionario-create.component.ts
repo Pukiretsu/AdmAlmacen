@@ -16,7 +16,6 @@ import { DependenciasService } from 'src/app/services/dependencias.service';
 })
 export class FuncionarioCreateComponent implements OnInit {
 
-
   fgFuncionarioValidator: FormGroup = this.fb.group(
     {
       'cedula': ["", [Validators.required]],

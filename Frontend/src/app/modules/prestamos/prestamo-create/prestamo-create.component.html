@@ -1,1 +1,244 @@
-<p>prestamo-create works!</p>
+<body class="viewportbody">
+    <div class="viewportheader">
+        <button class="bluebutton" routerLink="..">
+            <span class="buttonText">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-arrow-bar-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M12.5 15a.5.5 0 0 1-.5-.5v-13a.5.5 0 0 1 1 0v13a.5.5 0 0 1-.5.5zM10 8a.5.5 0 0 1-.5.5H3.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L3.707 7.5H9.5a.5.5 0 0 1 .5.5z"/>
+                </svg>
+                Volver
+            </span>
+        </button>
+
+        <h2>Nuevo Prestamo</h2>
+    </div>
+    <div class="container-overflow">
+
+        <div class="container wrap-50">
+            <h2 style="margin: 0; padding: 0;">Información Elemento</h2>
+
+            <form [formGroup]="fgElementValidator" style="display: flex; flex-direction: column;">
+                <input type="hidden" formControlName="id" />
+                
+                <div style="display: flex; flex-wrap: wrap; align-items: center;">
+                    <div class="form__group field" style="width: 20rem;">    
+                        <datalist id="NInventario" *ngFor="let i"></datalist>
+
+                        <input formControlName="numeroInventario"  type="input" class="form__field" placeholder="N° inventario" name="numeroInventario" id='numeroInventario' required />
+                        <label for="numeroInventario" class="form__label">Nº de Inventario</label>
+                    </div>
+                    <div style="padding: 0.5rem;">
+                        <button class="bluebutton" [disabled]="!fgElementValidator.controls['numeroInventario'].valid" (click)="searchAndValidate('elemento')">
+                            <span class="buttonText"  >
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                            </span>  
+                        </button>
+                    </div>
+                </div>
+                
+                <span style="color: var(--bg-secondary); font-size: 0.8rem;" *ngIf="elementoState === 2">El numero de inventario no se encuentra, reviselo o cree una nueva entrada</span>
+                <div *ngIf="elementoState !== 0" class="container-column">
+                    <div class="container-element-Centered el-100">
+                        
+                        <div class="form__group field">    
+                            <input formControlName="clase" type="input" class="form__field" placeholder="clase" name="clase" id='Clase' [readonly]="elementoState === 1" required />
+                            <label for="Clase" class="form__label">Clase</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="marca" type="input" class="form__field" placeholder="Marca" name="Marca" id='Marca' [readonly]="elementoState === 1" required />
+                            <label for="Marca" class="form__label">Marca</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="model" type="input" class="form__field" placeholder="Modelo" name="model" id='Modelo' [readonly]="elementoState === 1" required />
+                            <label for="Modelo" class="form__label">Modelo</label>
+                        </div> 
+
+                        <div class="form__group field">
+                            <input formControlName="serie" type="input" class="form__field" placeholder="serie" name="serie" id='Serie' [readonly]="elementoState === 1" required />
+                            <label for="Serie" class="form__label">Serie</label>
+                        </div>
+                
+                        <div class="form__group field">
+                            <input formControlName="plazoMaximo" type="number" min="0" class="form__field" placeholder="Plazo" name="plazoMaximo" id='PlazoMaximo' [readonly]="elementoState === 1" required />
+                            <label for="PlazoMaximo" class="form__label">Plazo Maximo (Dias)</label>
+                        </div>
+                        
+                        <div style="padding: 1rem; display: flex;justify-content:space-around;">
+                            <button *ngIf="elementoState === 2" [disabled]="!fgElementValidator.valid" class="bluebutton">
+                                <span class="buttonText" style="padding-right:0.5rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                    </svg>
+                                    Nuevo
+                                </span>  
+                            </button>
+                            <button *ngIf="elementoState === 1" [disabled]="!fgElementValidator.valid" class="bluebutton">
+                                <span class="buttonText" style="padding-right:1rem;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                        <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                                    </svg>
+                                    Confirmar
+                                </span>  
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>     
+        </div>
+
+        <!-- Info Prestante -->
+
+        <div class="container wrap-50">
+            <h2 style="margin: 0; padding: 0;">Información Prestante</h2>
+            
+            <form [formGroup]="fgFuncionarioValidator" style="display: flex; flex-direction: column; ">
+                <input type="hidden" formControlName="id" />
+                
+                <div style="display: flex; flex-wrap: wrap; align-items: center;">
+                    <div class="form__group field" style="width: 20rem;">    
+                        <input formControlName="cedula" type="input" class="form__field" placeholder="cedula" name="cedula" id='cedula' required />
+                        <label for="cedula" class="form__label">Cedula</label>
+                    </div>
+
+                    <div style="padding: 0.5rem;">
+                        <button class="bluebutton" [disabled]="!fgFuncionarioValidator.controls['cedula'].valid" (click)="searchAndValidate('prestante')">
+                            <span class="buttonText" >
+                                <svg xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                                </svg>
+                            </span>  
+                        </button>
+                    </div>
+                </div>
+
+                <span style="color: var(--bg-secondary); font-size: 0.8rem;" *ngIf="prestanteState === 2">El numero de cedula no se encuentra, reviselo o registre un nuevo prestante</span>
+                <div *ngIf="prestanteState !== 0" class="container-column">
+                    <div class="container-element-Centered el-50">
+
+
+                        <div class="form__group field">    
+                            <input formControlName="placa" type="input" class="form__field" placeholder="placa" name="placa" id='placa' [readonly]="prestanteState === 1" required />
+                            <label for="placa" class="form__label">Placa</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="nombre" type="input" class="form__field" placeholder="nombre" name="nombre" id='nombre' [readonly]="prestanteState === 1" required />
+                            <label for="nombre" class="form__label">Nombre(s)</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <input formControlName="apellido1" type="input" class="form__field" placeholder="apellido1" name="apellido1" id='apellido1' [readonly]="prestanteState === 1" required />
+                            <label for="apellido1" class="form__label">Primer Apellido</label>
+                        </div>
+
+                        <div class="form__group field">
+                            <input formControlName="apellido2" type="input" class="form__field" placeholder="apellido2" name="apellido2" id='apellido2' [readonly]="prestanteState === 1" required />
+                            <label for="apellido2" class="form__label">Segundo Apellido</label>
+                        </div>
+
+                    </div>
+                    
+                    <div class="container-element-Centered el-50">            
+
+                        <div class="form__group field">
+                            <input formControlName="telefono" type="input" class="form__field" placeholder="telefono" name="telefono" id='telefono' [readonly]="prestanteState === 1" required />
+                            <label for="telefono" class="form__label">Telefono</label>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <label for="grado" class="form__label">Grado</label>
+                            <select formControlName="grado" class="form__field">
+                                <option value=""> Grado </option>
+                                <option *ngFor="let p of gradoList" value="{{p.id}}">{{p.nombreGrado}}</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form__group field">
+                            <label for="dependencia" class="form__label">Dependencia</label>
+                            <select formControlName="dependencia"  class="form__field" placeholder="dependencia" name="dependencia" id='dependencia' [disabled]="prestanteState !== 1" required>
+                                <option value="">Dependencia</option>
+                                <option *ngFor="let p of dependenciaList" value="{{p.id}}">{{p.nombreDependencia}}</option>
+                            </select>
+                        </div>
+                        
+                        
+                        
+                    </div>
+                </div>
+                <div  style="padding: 1rem; display: flex;justify-content:space-around;">
+                    <button *ngIf="prestanteState === 2" [disabled]="!fgElementValidator.valid" class="bluebutton" >
+                        <span class="buttonText" style="padding-right:0.5rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                            Nuevo
+                        </span>  
+                    </button>
+                    <button *ngIf="prestanteState === 1" [disabled]="!fgElementValidator.valid" class="bluebutton">
+                        <span class="buttonText" style="padding-right:1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z"/>
+                            </svg>
+                            Confirmar
+                        </span>  
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="container wrap-100">
+            <form [formGroup]="fgPrestamoValidator" (ngSubmit)="savePrestamo()" style="display: flex; flex-direction: column; ">
+                
+                <h2 style="margin: 0; padding: 0;">Información prestamo</h2>
+                
+                <div class="container-column ">
+                    <div class="container-element-Centered el-50">
+                        <div class="form__group field">    
+                            <input formControlName="idPrestante" type="input" class="form__field" placeholder="idPrestante" name="idPrestante" id='idPrestante' readonly required />
+                            <label for="idPrestante" class="form__label">Id Prestante</label>
+                        </div>
+                        <div class="form__group field">    
+                            <input formControlName="idElemento" type="input" class="form__field" placeholder="idElemento" name="idElemento" id='idElemento' readonly required />
+                            <label for="idElemento" class="form__label">Id Elemento</label>
+                        </div>
+                        <div class="form__group field">    
+                            <input formControlName="observaciones" type="input" class="form__field" placeholder="idElemento" name="idElemento" id='idElemento' readonly required />
+                            <label for="idElemento" class="form__label">Id Elemento</label>
+                        </div>
+                    </div>
+                    <div class="container-element-Centered el-50">
+                        <div class="form__group field">    
+                            <input formControlName="servicio" type="input" class="form__field" placeholder="servicio" name="servicio" id='servicio' required />
+                            <label for="servicio" class="form__label">Servicio</label>
+                        </div>
+                        <div class="form__group field">    
+                            <input formControlName="fechaEntrada" type="date" class="form__field" placeholder="fechaEntrada" name="fechaEntrada" id='fechaEntrada' required />
+                            <label for="fechaEntrada" class="form__label">fechaEntrada</label>
+                        </div>
+                        <div class="form__group field">    
+                            <input formControlName="fechaSalida" type="date" class="form__field"placeholder="fechaSalida" name="fechaSalida" id='fechaSalida' required />
+                            <label for="fechaSalida" class="form__label">fechaSalida</label>
+                        </div>
+                        
+                    </div>
+                </div>
+                <div style="padding: 1rem;">
+                    <button [disabled]="!fgPrestamoValidator.valid" class="bluebutton" type="submit" name="action">
+                        <span class="buttonText" style="padding-right:1rem;">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                            </svg>
+                            Crear
+                        </span>  
+                    </button>
+                </div>
+            </form>      
+        </div>
+    </div>
+</body>

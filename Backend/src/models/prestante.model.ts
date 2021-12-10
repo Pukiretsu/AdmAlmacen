@@ -51,6 +51,13 @@ export class Prestante extends Entity {
   })
   telefono: string;
 
+  @property({
+    type: 'string',
+    required: false,
+  })
+  prestamos: string;
+  /* Json {"prestamos":[{"idprestamo": id, "estado":"prestado"}]} */
+
   constructor(data?: Partial<Prestante>) {
     super(data);
   }

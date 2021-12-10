@@ -18,6 +18,12 @@ export class Entrada extends Entity {
     type: 'string',
     required: true,
   })
+  idprestamo: string;
+
+  @property({
+    type: 'string',
+    required: true,
+  })
   observacion: string;
 
   constructor(data?: Partial<Entrada>) {

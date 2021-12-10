@@ -1,22 +1,22 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ModelFuncionario } from '../models/funcionario.model';
+import { ModelPrestante } from '../models/prestantes.model';
 import { SecurityService } from './security.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class FuncionariosService {
+export class PrestantesService {
   url = "http://localhost:3000";
   token = " ";
   constructor(private request : HttpClient, private securityServ: SecurityService) {
     this.token = securityServ.getToken()
    }
 
-  readFuncionarios():Observable<ModelFuncionario[]>
+  readPrestantes():Observable<ModelPrestante[]>
   {
-    return this.request.get<ModelFuncionario[]>(`${this.url}/funcionarios`,
+    return this.request.get<ModelPrestante[]>(`${this.url}/prestantes`,
     {
       headers: new HttpHeaders(
         {
@@ -25,9 +25,9 @@ export class FuncionariosService {
     });
   }
 
-  readFuncionariobyID(id: string):Observable<ModelFuncionario>
+  readPrestantebyID(id: string):Observable<ModelPrestante>
   {
-    return this.request.get<ModelFuncionario>(`${this.url}/funcionarios/${id}`,
+    return this.request.get<ModelPrestante>(`${this.url}/prestantes/${id}`,
     {
       headers: new HttpHeaders(
         {
@@ -36,9 +36,9 @@ export class FuncionariosService {
     });
   }
 
-  CreateFuncionario(Funcionario: ModelFuncionario) : Observable<ModelFuncionario>
+  CreatePrestante(Prestante: ModelPrestante) : Observable<ModelPrestante>
   {
-    return this.request.post<ModelFuncionario>(`${this.url}/funcionarios`, Funcionario,
+    return this.request.post<ModelPrestante>(`${this.url}/prestantes`, Prestante,
     {
       headers: new HttpHeaders(
         {
@@ -47,9 +47,9 @@ export class FuncionariosService {
     })
   }
 
-  UpdateFuncionario(Funcionario: ModelFuncionario) : Observable<ModelFuncionario>
+  UpdatePrestante(Prestante: ModelPrestante) : Observable<ModelPrestante>
   {
-    return this.request.put<ModelFuncionario>(`${this.url}/funcionarios/${Funcionario.id}`, Funcionario,
+    return this.request.put<ModelPrestante>(`${this.url}/prestantes/${Prestante.id}`, Prestante,
     {
       headers: new HttpHeaders(
         {
@@ -58,9 +58,9 @@ export class FuncionariosService {
     })
   }
 
-  DeleteFuncionario(Funcionario : ModelFuncionario) : Observable <any>
+  DeletePrestante(Prestante : ModelPrestante) : Observable <any>
   {
-    return this.request.delete(`${this.url}/funcionarios/${Funcionario.id}`,
+    return this.request.delete(`${this.url}/prestantes/${Prestante.id}`,
     {
       headers: new HttpHeaders(
         {
