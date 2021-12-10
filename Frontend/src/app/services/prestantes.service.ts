@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { ModelCedula } from '../models/cedula.model';
 import { ModelPrestante } from '../models/prestantes.model';
 import { SecurityService } from './security.service';
 
@@ -8,12 +9,38 @@ import { SecurityService } from './security.service';
   providedIn: 'root'
 })
 export class PrestantesService {
+
+  cedulaFilter = {
+    "fields": 
+    {
+      "id":true,
+      "nombre":false,
+      "apellido":false,
+      "cedula":true,
+      "placa":false,
+      "dependencia":false,
+      "grado":false,
+      "telefono":false,
+      "prestamos":false,
+    }
+  };
+
   url = "http://localhost:3000";
   token = " ";
   constructor(private request : HttpClient, private securityServ: SecurityService) {
     this.token = securityServ.getToken()
    }
 
+  readCedulas():Observable<ModelCedula[]>
+  {
+    return this.request.get<ModelCedula[]>(`${this.url}/prestantes?filter=${JSON.stringify(this.cedulaFilter)}`,
+    {
+      headers: new HttpHeaders(
+        {
+          'Authorization': `Bearer ${this.token}`
+        })
+    });
+  }
   readPrestantes():Observable<ModelPrestante[]>
   {
     return this.request.get<ModelPrestante[]>(`${this.url}/prestantes`,

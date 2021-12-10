@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ModelElemento } from '../models/elemento.model';
+import { ModelIdElemento } from '../models/numeroElemento.model';
 import { SecurityService } from './security.service';
 
 @Injectable({
@@ -9,12 +10,36 @@ import { SecurityService } from './security.service';
 })
 export class ElementosService {
 
+  idfilter = {
+    "fields": 
+    {
+      "id": true,
+      "clase": false,
+      "marca": false,
+      "model": false,
+      "serie": false,
+      "numeroInventario": true,
+      "plazoMaximo": false
+    }
+  };
+
   url = "http://localhost:3000";
   token = " ";
   constructor(private request : HttpClient, private securityServ: SecurityService) {
     this.token = securityServ.getToken()
    }
 
+  readIds():Observable<ModelIdElemento[]>
+  {
+    return this.request.get<ModelIdElemento[]>(`${this.url}/elementos?filter=${JSON.stringify(this.idfilter)}`,
+    {
+      headers: new HttpHeaders(
+        {
+          'Authorization': `Bearer ${this.token}`
+        })
+    });
+  }
+  
   readElementos():Observable<ModelElemento[]>
   {
     return this.request.get<ModelElemento[]>(`${this.url}/elementos`,
